@@ -10,6 +10,7 @@ int main(void)
 	pid_t pid;
 
 	pid = fork();
+
 	if (pid == -1)
 	{
 		perror("lol");
