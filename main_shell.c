@@ -18,11 +18,8 @@ int main(void)
 	}
 	if (pid == 0)
 	{
-		printf("im the parant\n");
-	}
-	else
-	{
-		printf("$\n");
+		sleep(1);
+		printf("\n$");
 	}
 	return (0);
 }
