@@ -8,8 +8,13 @@
 int main(void)
 {
 	pid_t pid;
+	char *a = "exit";
+	size_t n = 10;
+	char *buf = malloc(sizeof(char) * n);
 
 	pid = fork();
+//	while (pid = 0)
+//	{
 
 	if (pid == -1)
 	{
@@ -20,6 +25,8 @@ int main(void)
 	{
 		sleep(1);
 		printf("\n$");
+//		getline(&buf, &n, stdin);
 	}
+//	}
 	return (0);
 }
