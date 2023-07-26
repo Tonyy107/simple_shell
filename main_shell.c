@@ -10,7 +10,7 @@ int main(void)
 	int lol;
 	char *command;
 	int stat;
-	long unsigned int len = sizeof(rem);
+	unsigned long len = sizeof(rem);
 
 	while (1)
 	{
@@ -21,12 +21,12 @@ int main(void)
 			perror("end of file\n");
 				break;
 		}
-		else 
+		else
 		{
 			command = rem;
 			stat = system(command);
 			if (stat != 0)
-				printf("'%s' not found\n",command);
+				printf("'%s' not found\n", command);
 		}
 
 	}
