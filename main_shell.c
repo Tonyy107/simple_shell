@@ -41,5 +41,5 @@ int main(void)
 		free(rem);
 	}
 	}
-	return 0;
+	return (0);
 }
