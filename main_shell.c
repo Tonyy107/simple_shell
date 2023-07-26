@@ -26,7 +26,7 @@ int main(void)
 			command = rem;
 			stat = system(command);
 			if (stat != 0)
-				printf("'%s' not found",command);
+				printf("'%s' not found\n",command);
 		}
 
 	}
