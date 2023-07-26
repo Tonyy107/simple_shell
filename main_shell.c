@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
  * main - entry point
@@ -8,7 +8,7 @@ int main(void)
 {
 	char *rem;
 	int lol;
-	char command;
+	char *command;
 	int stat;
 
 	while (1)
@@ -22,7 +22,7 @@ int main(void)
 		}
 		else 
 		{
-			command = line;
+			command = rem;
 			stat = system(command);
 			if (stat != 0)
 				printf("'%s' not found",command);
