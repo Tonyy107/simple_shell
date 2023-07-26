@@ -11,7 +11,6 @@ int main(void)
 	int stat;
 	char *buffer;
 	size_t bufsize = 32;
-	size_t characters;
 	char *command;
 	pid_t pid;
 
@@ -21,11 +20,11 @@ int main(void)
 	{
 	printf("$ ");
 	buffer = (char *)malloc(bufsize * sizeof(char));
-	characters = getline(&buffer, &bufsize, stdin);
+	getline(&buffer, &bufsize, stdin);
 
-	if (characters == 1)
+	if (buffer != argv[0])
 	{
-		perror("error");
+		perror("./hsh");
 	}
 		command = buffer;
 		if (pid == 0)
