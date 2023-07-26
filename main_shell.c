@@ -3,18 +3,17 @@
 /**
  * main - entry point
  *
- * Return: 0 on success, 1 on error
+ * Return: 0
  */
 int main(void)
 {
-	pid_t pid;
-	char *a = "exit";
+	int stat;
+	char *a ;
 	size_t n = 10;
 	char *buf = malloc(sizeof(char) * n);
 
-	pid = fork();
-//	while (pid = 0)
-//	{
+	while (1)
+	{
 
 	if (pid == -1)
 	{
@@ -23,10 +22,15 @@ int main(void)
 	}
 	if (pid == 0)
 	{
-		sleep(1);
 		printf("\n$");
-//		getline(&buf, &n, stdin);
+		sleep(1);
+		getline(&buf, &n, stdin);
 	}
-//	}
+	else
+	{
+		wait(&stat);
+		printf("\n$");
+	}
+	if ()
 	return (0);
 }
