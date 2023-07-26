@@ -15,6 +15,8 @@ int main(void)
 	pid_t pid;
 
 	pid = fork();
+	while (1)
+	{
 	printf("$ ");
 	lol = getline(&rem, &len, stdin);
 
@@ -37,6 +39,7 @@ int main(void)
 	if (rem != NULL)
 	{
 		free(rem);
+	}
 	}
 	return 0;
 }
