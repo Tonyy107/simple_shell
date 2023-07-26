@@ -13,15 +13,16 @@ int main(void)
 	size_t bufsize = 32;
 	size_t characters;
 	char *command;
-
-
 	pid_t pid;
+
 	pid = fork();
+
 	while (1)
 	{
 	printf("$ ");
 	buffer = (char *)malloc(bufsize * sizeof(char));
-	characters = getline(&buffer,&bufsize,stdin);
+	characters = getline(&buffer, &bufsize, stdin);
+
 	if (characters == 1)
 	{
 		perror("error");
