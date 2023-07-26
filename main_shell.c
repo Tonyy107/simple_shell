@@ -10,10 +10,10 @@ int main(void)
 	char *argv[] = {"/bin/ls", "-l", NULL};
 	char *rem = NULL;
 	size_t len = sizeof(rem);
-	int lol, stat;
+	int stat;
+	char lol[100];
 	char *command;
 	pid_t pid;
-
 	pid = fork();
 	while (1)
 	{
