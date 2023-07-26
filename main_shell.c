@@ -24,7 +24,7 @@ int main(void)
 		else
 		{
 			command = rem;
-			if (pid == 0)
+			if (pid >= 0)
 			{
 				execve(command, argv, NULL);
 			}
