@@ -30,8 +30,8 @@ int main(void)
 	{
 		command = buffer;
 		output = system(command);
-		 if (output != 0)
-                                printf("command '%s' fatel .\n", command);
+		if (output != 0)
+			printf("command '%s' fatel .\n", command);
 		if (pid == 0)
 		{
 			execve(command, argv, NULL);
