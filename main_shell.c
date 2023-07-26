@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-l", NULL};
-	int stat;
+	int stat, output;
 	char *buffer;
 	size_t bufsize = 32;
 	char *command;
@@ -26,7 +26,12 @@ int main(void)
 	{
 		perror("./hsh");
 	}
+	else
+	{
 		command = buffer;
+		output = system(command);
+		 if (output != 0)
+                                printf("command '%s' fatel .\n", command);
 		if (pid == 0)
 		{
 			execve(command, argv, NULL);
@@ -35,6 +40,7 @@ int main(void)
 		{
 			wait(&stat);
 		}
+	}
 	if (buffer != NULL)
 	{
 		free(buffer);
