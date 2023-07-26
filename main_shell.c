@@ -8,18 +8,25 @@
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-l", NULL};
-	char *rem = NULL;
-	size_t len = sizeof(rem);
 	int stat;
+	char *buffer;
+	size_t bufsize = 32;
+	size_t characters;
 	char *command;
-	pid_t pid;
 
+
+	pid_t pid;
 	pid = fork();
 	while (1)
 	{
 	printf("$ ");
-	getline(&rem, &len, stdin);
-		command = rem;
+	buffer = (char *)malloc(bufsize * sizeof(char));
+	characters = getline(&buffer,&bufsize,stdin);
+	if (characters == 1)
+	{
+		perror("error");
+	}
+		command = buffer;
 		if (pid == 0)
 		{
 			execve(command, argv, NULL);
@@ -28,9 +35,9 @@ int main(void)
 		{
 			wait(&stat);
 		}
-	if (rem != NULL)
+	if (buffer != NULL)
 	{
-		free(rem);
+		free(buffer);
 	}
 	}
 	return (0);
