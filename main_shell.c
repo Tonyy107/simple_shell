@@ -18,7 +18,6 @@ int main(void)
 
 	while (1)
 	{
-	printf("$ \n");
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	getline(&buffer, &bufsize, stdin);
 
@@ -34,6 +33,7 @@ int main(void)
 			printf("command '%s' fatel .\n", command);
 		if (pid == 0)
 		{
+			printf("$ \n");
 			execve(command, argv, NULL);
 			wait(&output);
 		}
