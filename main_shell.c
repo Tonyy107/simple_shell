@@ -10,7 +10,7 @@ int main(void)
 	char *argv[] = {"/bin/ls", "-l", NULL};
 	char *rem = NULL;
 	size_t len = sizeof(rem);
-	int lol, stat;
+	int stat;
 	char *command;
 	pid_t pid;
 
@@ -18,14 +18,7 @@ int main(void)
 	while (1)
 	{
 	printf("$ ");
-	lol = getline(&rem, &len, stdin);
-
-	if (lol == -1)
-	{
-		perror("end of file\n");
-	}
-	else
-	{
+	getline(&rem, &len, stdin);
 		command = rem;
 		if (pid == 0)
 		{
@@ -35,7 +28,6 @@ int main(void)
 		{
 			wait(&stat);
 		}
-	}
 	if (rem != NULL)
 	{
 		free(rem);
