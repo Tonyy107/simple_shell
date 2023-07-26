@@ -10,14 +10,15 @@ int main(void)
 	int lol;
 	char *command;
 	int stat;
+	long unsigned int len = sizeof(rem);
 
 	while (1)
 	{
 		printf("$dola$ ");
-		lol = getline(&rem, sizeof(rem), stdin);
+		lol = getline(&rem, &len, stdin);
 		if (lol == -1)
 		{
-			perror("end of file\n")
+			perror("end of file\n");
 				break;
 		}
 		else 
