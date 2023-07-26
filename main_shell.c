@@ -14,29 +14,21 @@ int main(void)
 	pid_t pid;
 	unsigned long len = sizeof(rem);
 
-	while (1)
-	{
-		printf("$dola$ ");
+		printf("$");
 		lol = getline(&rem, &len, stdin);
+		pid = fork();
 		if (lol == -1)
 		{
 			perror("end of file\n");
-			break;
 		}
 		else
 		{
-			command = strtok(rem, " ");
-			if (command == NULL)
-			{
-				continue;
-			}
-			pid = fork();
+			command = rem;
 			if (pid == 0)
 			{
-				execvp(command, argv);
+				execve(command, argv, NULL);
+				waitpid(pid, NULL, 0);
 			}
 		}
-	}
-
 	return (0);
 }
