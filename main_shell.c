@@ -2,34 +2,41 @@
 
 /**
  * main - entry point
- * Return: 0 or 1
+ *
+ * Return: 0 on success, 1 on error
  */
-
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-l", NULL};
-	char *rem;
-	int lol;
+	char *rem = NULL;
+	size_t len = sizeof(rem);
+	int lol, stat;
 	char *command;
 	pid_t pid;
-	unsigned long len = sizeof(rem);
 
-		printf("$");
-		lol = getline(&rem, &len, stdin);
-		pid = fork();
-		if (lol == -1)
+	pid = fork();
+	printf("$ ");
+	lol = getline(&rem, &len, stdin);
+
+	if (lol == -1)
+	{
+		perror("end of file\n");
+	}
+	else
+	{
+		command = rem;
+		if (pid == 0)
 		{
-			perror("end of file\n");
+			execve(command, argv, NULL);
 		}
 		else
 		{
-			command = rem;
-			if (pid >= 0)
-			{
-				execve(command, argv, NULL);
-			}
-			else
-				waitpid(pid, NULL, 0);
+			wait(&stat);
 		}
-	return (0);
+	}
+	if (rem != NULL)
+	{
+		free(rem);
+	}
+	return 0;
 }
