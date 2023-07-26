@@ -27,8 +27,9 @@ int main(void)
 			if (pid == 0)
 			{
 				execve(command, argv, NULL);
-				waitpid(pid, NULL, 0);
 			}
+			else
+				waitpid(pid, NULL, 0);
 		}
 	return (0);
 }
