@@ -27,15 +27,17 @@ int main(void)
 		}
 		else
 		{
-
+			printf("$\n");
+			command = buffer;
+			output = system(command);
 			if (pid == 0)
 			{
-				printf("$ \n");
-				wait(&output);
+				printf("$\n");
 				command = buffer;
 				output = system(command);
 				if (output != 0)
 					printf("command '%s' fatel .\n", command);
+				wait(&output);
 			}
 		}
 		if (buffer != NULL)
@@ -43,6 +45,5 @@ int main(void)
 			free(buffer);
 		}
 	}
-
 	return (0);
 }
