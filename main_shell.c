@@ -17,10 +17,7 @@ int main(void)
 	pid = fork();
 
 	while (1)
-	{
-<<<<<<< HEAD
-		putchar('$');
-		putchar('\n');
+		{
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	getline(&buffer, &bufsize, stdin);
 
