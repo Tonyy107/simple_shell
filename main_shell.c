@@ -18,10 +18,12 @@ int main(void)
 
 	while (1)
 	{
+		putchar('$');
+		putchar('\n');
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	getline(&buffer, &bufsize, stdin);
 
-	if (buffer == argv[0])
+	if (buffer != argv[0])
 	{
 		perror("./hsh");
 	}
