@@ -17,7 +17,21 @@ int main(void)
 	pid = fork();
 
 	while (1)
+		{
+	buffer = (char *)malloc(bufsize * sizeof(char));
+	getline(&buffer, &bufsize, stdin);
+
+	if (buffer != argv[0])
 	{
+		perror("./hsh");
+	}
+	else
+	{
+		command = buffer;
+		output = system(command);
+		if (output != 0)
+			printf("command '%s' fatel .\n", command);
+		if (pid == 0)
 		buffer = (char *)malloc(bufsize * sizeof(char));
 		getline(&buffer, &bufsize, stdin);
 
