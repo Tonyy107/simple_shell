@@ -27,13 +27,12 @@ int main(void)
 		}
 		else
 		{
-			command = buffer;
-			output = system(command);
-			if (output != 0)
-				printf("command '%s' fatel .\n", command);
+			printf("$\n");
+				command = buffer;
+				output = system(command);
 			if (pid == 0)
 			{
-				printf("$ \n");
+				printf("$\n");
 				command = buffer;
 				output = system(command);
 				if (output != 0)
