@@ -37,7 +37,6 @@ int main(void)
 		getline(&buffer, &bufsize, stdin);
 
 		if (buffer == argv[0])
->>>>>>> 2f89c7cccb0a6aac42200a1686c628b016a219e4
 		{
 			perror("./hsh");
 		}
