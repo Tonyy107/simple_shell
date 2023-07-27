@@ -8,7 +8,7 @@
 int main(void)
 {
     char *argv[] = {"/bin/ls", "-l", NULL};
-    int  output;
+    int output;
     char *buffer;
     size_t bufsize = 32;
     char *command;
@@ -18,30 +18,33 @@ int main(void)
 
     while (1)
     {
-    buffer = (char *)malloc(bufsize * sizeof(char));
-    getline(&buffer, &bufsize, stdin);
+        buffer = (char *)malloc(bufsize * sizeof(char));
+        getline(&buffer, &bufsize, stdin);
 
-    if (buffer == argv[0])
-    {
-        perror("./hsh");
-    }
-    else
-    {
-        command = buffer;
-        output = system(command);
-        if (output != 0)
-            printf("command '%s' fatel .\n", command);
-        if (pid == 0)
+        if (buffer == argv[0])
         {
-            printf("$ \n");
-            execve(command, argv, NULL);
-            wait(&output);
+            perror("./hsh");
         }
-    }
-    if (buffer != NULL)
-    {
-        free(buffer);
-    }
+        else
+        {
+            command = buffer;
+            output = system(command);
+            if (output != 0)
+                printf("command '%s' fatel .\n", command);
+            if (pid == 0)
+            {
+                printf("$ \n");
+                command = buffer;
+                output = system(command);
+                if (output != 0)
+                    printf("command '%s' fatel .\n", command);
+                wait(&output);
+            }
+        }
+        if (buffer != NULL)
+        {
+            free(buffer);
+        }
     }
     return (0);
 }
